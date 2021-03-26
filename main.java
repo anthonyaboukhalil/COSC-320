@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 
 
@@ -69,17 +70,15 @@ public class main{
     System.out.println(inputlist);
     //for each word try to use it as a key in the hashmap, if it returns a value replace the string in the array
     //else keep going
-    // returningText(n);
-
       try{
         int i = 0;
         while(i<inputlist.size()){
           midscan = inputlist.get(i);
           //if statement
           if(hash.get(midscan)!=null){
+            //replaces the value of the string in teh array list
             inputlist.set(i,hash.get(midscan));
             System.out.println(inputlist);
-          
           }
           i++;
       }
@@ -89,7 +88,19 @@ public class main{
     
     //recompile the string array with a space seperating each value
     //print it to the result txt to make life easier
-    
+    try {
+      PrintWriter pw = new PrintWriter("realoutput.txt");
+      // ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+      String result = String.join(" ", inputlist);
+
+      pw.println(result);
+      pw.close();
+      // oos.close();
+    } catch (IOException e) {
+      System.out.println("whoopsie");
+      e.printStackTrace();
+    }
 
   
   }
