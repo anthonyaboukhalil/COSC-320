@@ -5,20 +5,26 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
 
 
 
 public class main{
 
     public static void main(String[] args) {
-        
+
+        int n = 0;
+        String temp = null;
+        Object midscan = null;
+        ArrayList inputlist = new ArrayList<>();
+
         String buff = null ;
         ArrayList myList = new ArrayList<>();
         Object[] words = new String[600];
         String[] parts = new String[2];
         HashMap<String, String> hash = new HashMap<String, String>();
         try{
-            File f = new File("/Users/anthonyaboukhalil/Desktop/GitFiles/COSC-320/slangs.txt");
+            File f = new File("slangs.txt");
             Scanner input = new Scanner(f).useDelimiter("\\s+");
             
             while (input.hasNextLine()) {
@@ -42,11 +48,54 @@ public class main{
          String part2 = parts[1];
          hash.put(part1,part2);
     }
+    //System.out.println(hash);
+
+
+    // run through sample text and add values to an array
+    File in = new File("realtest.txt");
+    try {
+      Scanner scanin = new Scanner(in).useDelimiter(" ");
+    while(scanin.hasNext()){
+      temp = scanin.next();
+      inputlist.add(temp);
+    }
+    scanin.close();
+    //close the scanner 
+    } catch (FileNotFoundException e) {
+      System.out.println("No input found");;
+      e.printStackTrace();
+    } 
+    System.out.println(inputlist);
+    //for each word try to use it as a key in the hashmap, if it returns a value replace the string in the array
+    //else keep going
+    // returningText(n);
+
+      try{
+        int i = 0;
+        while(i<inputlist.size()){
+          midscan = inputlist.get(i);
+          //if statement
+          if(hash.get(midscan)!=null){
+            inputlist.set(i,hash.get(midscan));
+            System.out.println(inputlist);
+            returningText(i);
+          }
+          i++;
+      }
+      }catch(Exception e){
+        System.out.println("whoops");
+      }
+    
+    //recompile the string array with a space seperating each value
+    //print it to the result txt to make life easier
     
 
-    System.out.println(hash);
   
   }
+
+    private static void returningText(int i) {
+    }
+  
 
 
 
