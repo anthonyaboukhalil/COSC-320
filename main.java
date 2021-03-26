@@ -54,10 +54,11 @@ public class main{
     // run through sample text and add values to an array
     File in = new File("realtest.txt");
     try {
-      Scanner scanin = new Scanner(in).useDelimiter(" ");
+      Scanner scanin = new Scanner(in).useDelimiter("\\s");
     while(scanin.hasNext()){
       temp = scanin.next();
       inputlist.add(temp);
+     
     }
     scanin.close();
     //close the scanner 
@@ -78,7 +79,7 @@ public class main{
           if(hash.get(midscan)!=null){
             inputlist.set(i,hash.get(midscan));
             System.out.println(inputlist);
-            returningText(i);
+          
           }
           i++;
       }
@@ -93,8 +94,6 @@ public class main{
   
   }
 
-    private static void returningText(int i) {
-    }
   
 
 
